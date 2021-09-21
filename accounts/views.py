@@ -5,12 +5,14 @@ from .forms import UploadForm
 from .models import Upload
 import os
 
+
 def home_view(request):
     form = UploadForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         form.save()
-    context={'form': form}
+    context = {'form': form}
     return render(request, 'home.html', context)
+
 
 def signup_view(request):
     form = UserCreationForm(request.POST)
@@ -22,6 +24,8 @@ def signup_view(request):
         login(request, user)
         return redirect('home')
     return render(request, 'signup.html', {'form': form})
+
+
 '''
 def result(request):
     current_user=request.user
@@ -36,4 +40,3 @@ def result(request):
         ##update the output excel file path in status.html
         ## put output excel file in 'static/files/output'
 '''
-
