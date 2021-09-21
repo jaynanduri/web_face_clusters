@@ -1,0 +1,45 @@
+{% load static %}
+<head>
+    <link href="{% static 'css/style_sheet.css' %}" rel="stylesheet">
+    <style>
+      .center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 10px;
+      width: 50%;
+      border-radius: 50%;
+    }
+    .contentform {
+    max-width: 500px;
+    margin: auto;
+  }
+  
+
+  
+    </style>
+</head>
+<div class="login-box">
+    <a href="https://www.jocata.com"><img src="https://media-exp1.licdn.com/dms/image/C4E0BAQHRlbEjxmR-yQ/company-logo_200_200/0?e=2159024400&v=beta&t=73utLwnhpFZ5xeLzBjFEpQBViTwq2v9UOXpi5LYl2u0" alt="Jocata" align="middle" class=center></a>
+
+<form method="post">
+  {% csrf_token %}
+  {% for field in form %}
+  <div class="user-box">
+      {{ field.label_tag }}<br>
+      {{ field }}
+      
+      {% for error in field.errors %}
+        <p style="color: red">{{ error }}</p>
+      {% endfor %}
+    </div>
+  {% endfor %}
+  <div class="user-box1">
+      <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <input type="submit" value="Next">
+  </div>
+</form>
+</div>
